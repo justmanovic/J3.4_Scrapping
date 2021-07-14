@@ -1,0 +1,5 @@
+require 'dotenv'
+require 'rubocop'
+require 'pry'
+require 'rspec'
+require 'nokogiri'
