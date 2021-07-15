@@ -3,10 +3,9 @@ require 'rubocop'
 require 'pry'
 require 'rspec'
 require 'nokogiri'
-require 'rubygems'
 require 'open-uri'
 
-def lecture_page (page)
+def lecture_page(page)
   # Initialisation
   doc = Nokogiri::HTML(open(page))
   tab_crypto_name = []
