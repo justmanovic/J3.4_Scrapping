@@ -24,4 +24,4 @@ def lecture_page (page)
 end
 
 
-
+print lecture_page("https://coinmarketcap.com/?page=1")
