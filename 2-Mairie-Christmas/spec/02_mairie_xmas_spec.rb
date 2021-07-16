@@ -17,20 +17,5 @@ describe 'la fonction get_townhall_email' do
   end
   
 end
-
-describe 'get_townhall_urls' do
-
-  it "récupère la liste des urls des villes" do
-    expect(get_townhall_email("http://annuaire-des-mairies.com/60/abancourt.html")).to eq({"ABANCOURT"=>"mairie.abancourt@wanadoo.fr"}) 
-  end
-  it "récupère la liste des urls des villes" do
-    expect(get_townhall_email("http://annuaire-des-mairies.com/60/cuvergnon.html")).to eq({"CUVERGNON"=>"mairie.cuvergnon@wanadoo.fr"}) 
-  end
-  it "récupère la liste des urls des villes" do
-    expect(get_townhall_email("http://annuaire-des-mairies.com/60/la-neuville-en-hez.html")).to eq({"LA-NEUVILLE-EN-HEZ"=>"mairie.laneuvilleenhez@wanadoo.fr"}) 
-  end
-  it "récupère la liste des urls des villes" do
-    expect(get_townhall_email("http://annuaire-des-mairies.com/60/saint-crepin-aux-bois.html")).to eq({"SAINT-CREPIN-AUX-BOIS"=>"mairie.stcrepin@wanadoo.fr"}) 
-  end
   
 end

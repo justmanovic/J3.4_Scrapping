@@ -7,7 +7,7 @@ require 'open-uri'
 
 # Renvoi un hash par député avec son nom, prénom et email à partir de sa fiche
 def get_depute_email(liste_depute_url)
-  doc = Nokogiri::HTML(URI.open(townhall_url))
+  doc = Nokogiri::HTML(URI.open(liste_depute_url))
   complete_name = doc.xpath("//*[@id='haut-contenu-page']/article/div[2]/h1").text
   email = doc.xpath("//*[@id='haut-contenu-page']/article/div[3]/div/dl/dd/ul/li[2]/a").text
   first_name = complete_name.split(" ")[1]
@@ -23,17 +23,17 @@ def get_deputes_urls(page_liste)
   
   # Récupération des URLs des fiches de chaque député et ajout du début de l'URL
   doc.xpath("//ul/li/a[contains(@href, 'fiche')]/@href").each { |url| tab_url<< ("https://www2.assemblee-nationale.fr" + url.to_s) }
-  
   return tab_url
 end
 
 # Obtention des emails des députés à partir de la liste des députés
-def get_all_emails(page_dept)
+def get_all_emails(page_assnat)
   list_emails = []
-  list_pages =  get_deputes_urls(page_dept)
+  list_pages =  get_deputes_urls(page_assnat)
 
   # Constitution du tableau final des hash
   list_pages.each { |url| list_emails << get_depute_email(url) }
 
   return list_emails
 end
+
