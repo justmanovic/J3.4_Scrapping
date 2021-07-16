@@ -3,12 +3,11 @@ require 'rubocop'
 require 'pry'
 require 'rspec'
 require 'nokogiri'
-require 'rubygems'
 require 'open-uri'
 
 # Renvoi un hash par député avec son nom, prénom et email à partir de sa fiche
 def get_depute_email(liste_depute_url)
-  doc = Nokogiri::HTML(open(townhall_url))
+  doc = Nokogiri::HTML(URI.open(townhall_url))
   complete_name = doc.xpath("//*[@id='haut-contenu-page']/article/div[2]/h1").text
   email = doc.xpath("//*[@id='haut-contenu-page']/article/div[3]/div/dl/dd/ul/li[2]/a").text
   first_name = complete_name.split(" ")[1]
@@ -19,7 +18,7 @@ end
 
 # Tableau des URLs des fiches à partir de la liste des députés
 def get_deputes_urls(page_liste)
-  doc = Nokogiri::HTML(open(page_liste))
+  doc = Nokogiri::HTML(URI.open(page_liste))
   tab_url = []
   
   # Récupération des URLs des fiches de chaque député et ajout du début de l'URL
