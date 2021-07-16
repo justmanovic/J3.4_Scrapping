@@ -5,10 +5,19 @@ require 'rspec'
 require 'nokogiri'
 require 'rubygems'
 require 'open-uri'
+require 'watir'
+require 'webdrivers'
+require 'faker'
+
+browser = Watir::Browser.new
+browser.goto 'https://coinmarketcap.com/all/views/all/'
+submit_button = browser.button(type: 'submit')
+submit_button.click
+
 
 def lecture_page (page)
   # Initialisation
-  doc = Nokogiri::HTML(open(page))
+  doc = Nokogiri::HTML(URI.open(page))
   tab_crypto_name = []
   tab_crypto_values = []
 
